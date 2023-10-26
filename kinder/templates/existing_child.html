@@ -1,0 +1,30 @@
+<html>
+{% include "master.html" %}
+<center><h1>{{title}}</h1></center></center>
+
+<table align='center' border =2>
+    <thead>
+        <tr>
+            <tr>
+                <td>Num</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Alergies</td>
+                <td>Parent Full Name</td>
+            </tr>
+        </thead>
+        {% for k in queryset %}
+        <tbody>
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{k.Child_First_Name}}</td>
+                <td>{{k.Child_Last_Name}}</td>
+                <td>{{k.Child_allergies}}</td>
+                <td>{{k.Parent_FullName}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+</table>
+
+
+</html>
