@@ -11,9 +11,15 @@ class child(models.Model):
     ##child_id = models.AutoField(primary_key = True, editable = False)
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
-    #Child_DBO  = models.DateField()
+    Child_DoB  = models.DateField(max_length=9,null=False,blank=False)
     Child_allergies  = models.CharField(max_length=200,null=False,blank=False)
-    Parent_FullName  = models.CharField(max_length=200,null=False,blank=False)
+
+    Parent_First_Name = models.CharField(max_length=200,null=False,blank=False)
+    Parent_Last_Name = models.CharField(max_length=200,null=False,blank=False)
+    Parent_Phone = models.CharField(max_length=10,null=False,blank=False)
+    Parent_Address = models.CharField(max_length=200,null=False,blank=False)
+    Consent_Box = models.CharField(max_length=200,null=False,blank=False)
+    
     ##geeks_field = models.CharField(max_length = 200)
 ##    c_lname  = models.CharField(max_length=30)
 ##    c_class  = models.CharField(max_length=30)

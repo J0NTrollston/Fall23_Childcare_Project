@@ -19,12 +19,19 @@ def register(request):
     if request.method == 'POST':
         form=ChilForm(request.POST)
         if form.is_valid():
+            #child information
             child_fname= form.cleaned_data['Child_First_Name']
             child_lname= form.cleaned_data['Child_Last_Name']
-            #child_dbo_Date= form.cleaned_data['Child_DBO']
+            child_dob_Date = form.cleaned_data['Child_DoB']
             child_aler= form.cleaned_data['Child_allergies']
-            child_parent_name= form.cleaned_data['Parent_FullName']
-            chi = child.objects.create(Child_First_Name = child_fname, Child_Last_Name = child_lname,Child_allergies=child_aler,Parent_FullName=child_parent_name ) 
+            #parent information
+            child_parent_fname = form.cleaned_data['Parent_First_Name']
+            child_parent_lname = form.cleaned_data['Parent_Last_Name']
+            child_parent_phone = form.cleaned_data['Parent_Phone']
+            child_parent_address = form.cleaned_data['Parent_Address']
+
+            concent_box = form.cleaned_data['Concent_Box']
+            chi = child.objects.create(Child_First_Name = child_fname, Child_Last_Name = child_lname, Child_DoB = Child_DoB, Child_allergies=child_aler,Parent_First_Name = child_parent_fname, Parent_Last_Name = child_parent_lname, Parent_Phone = child_parent_phone, Parent_Address = child_parent_address, Concent_Box = concent_box) 
 
             chi.save()
             return render(request,'ack.html',{'title':"Child Registered Successfully"}) 
