@@ -36,6 +36,10 @@ from child.views  import (
     dropout,
     )
 
+from child.views  import (
+    home,
+    )
+
 
 
 
@@ -43,6 +47,7 @@ from child.views  import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name="home"),
+     path('home/',home),
     path('reg/',register),
     path('emp/',reg_employee),
     path('exist/',existing_child),

@@ -1,7 +1,10 @@
-<h1>Employee Registration</h1>
-
+<html>
+{% include "master.html" %}
+<center><h1>{{title}}</h1>
 <form action="" method='post'> 
     {% csrf_token %}
-    {{emp_form}}
+    {{emp_form.as_p}}
     <button type="submit">Register</button>
 </form>
+</center>
+</html>

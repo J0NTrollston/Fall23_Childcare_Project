@@ -14,6 +14,10 @@ from .models import employee
 def home_page(request):
     return render(request,"home.html",{})
 
+# Create your views here.
+def home(request):
+    return render(request,'home.html')
+
 def register(request):
     title="Child Registration"
     if request.method == 'POST':
@@ -41,19 +45,30 @@ def register(request):
 
 
 def reg_employee(request):
+    title="Employee Registration"
     if request.method == 'POST':
         emp_form=EmployeeForm(request.POST)
         if emp_form.is_valid():
             emp_fname= emp_form.cleaned_data['Employee_First_Name']
+            emp_lname= emp_form.cleaned_data['Employee_Last_Name']
+            emp_dbo= emp_form.cleaned_data['Employee_DBO']
+            emp_add= emp_form.cleaned_data['Employee_Address']
 
-            emp = employee.objects.create(Employee_First_Name = emp_fname ) 
+            emp = employee.objects.create(Employee_First_Name = emp_fname,
+                                          Employee_Last_Name = emp_lname,
+                                          Employee_DBO= emp_dbo,
+                                            Employee_Address= emp_add ) 
 
             emp.save()
-            return HttpResponse("Employee Registered Successfully")
+            return render(request,'ack.html',{'title':"Employee Registered Successfully"}) 
     emp_form=EmployeeForm()
+    context={
+    'title':title,
+    'emp_form':emp_form,
+    }
 
-    return render(request,'reg_employee.html',{'emp_form':emp_form})
-
+    return render(request,'reg_employee.html',context)
+#{'emp_form':emp_form}
 
 def existing_child(request):
     title="Total Registered Children"
