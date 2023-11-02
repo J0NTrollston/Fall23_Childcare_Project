@@ -1,0 +1,10 @@
+<html>
+{% include "master.html" %}
+<center><h1>{{title}}</h1>
+<form action="" method='post'> 
+    {% csrf_token %}
+    {{emp_form.as_p}}
+    <button type="submit">Terminate Employee</button>
+</form>
+</center>
+</html>

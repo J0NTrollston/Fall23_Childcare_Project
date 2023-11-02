@@ -5,8 +5,7 @@ from django.db import models
 from django.db import models
 from django.db.models import Model
 
-#from phonenumber_field.modelfields import PhoneNumberField
-#from phone_field import PhoneField
+
 
 
 # Create your models here.
@@ -35,10 +34,7 @@ class employee(models.Model):
     Employee_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Employee_DBO  = models.DateField(null=True,blank=True)
     Employee_Address= models.CharField(max_length=200,null=True,blank=True)
-    #Employee_Phone= PhoneField(blank=True,help_text='Contact phone number')
-    ##geeks_field = models.CharField(max_length = 200)
-##    c_lname  = models.CharField(max_length=30)
-##    c_class  = models.CharField(max_length=30)
-##    c_addr  = models.CharField(max_length=30)
-##    c_school  = models.CharField(max_length=30)
-##    c_enmail  = models.CharField(max_length=30)
+    Employee_Phone_Number  = models.CharField(max_length=10,null=True,blank=True)
+    Employee_Salary  = models.DecimalField(max_digits=3, decimal_places=2,null=True,blank=True)
+    Employee_Class_Num= models.CharField(max_length=6,null=True,blank=True)
+

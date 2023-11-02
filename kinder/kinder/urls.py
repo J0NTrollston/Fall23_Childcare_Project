@@ -27,6 +27,10 @@ from child.views  import (
     )
 
 from child.views  import (
+    dropout_Emp,
+    )
+
+from child.views  import (
     existing_child,
     )
 from child.views  import (
@@ -53,5 +57,6 @@ urlpatterns = [
     path('exist/',existing_child),
     path('search/',search),
     path('dropout/',dropout),
+    path('terminate/',dropout_Emp),
 ]
 
