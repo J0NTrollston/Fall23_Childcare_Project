@@ -13,11 +13,12 @@ class ChilForm(forms.Form):
 ##    c_addr  = forms.CharField(max_length=30)
 ##    c_school  = forms.CharField(max_length=30)
 ##    c_enmail  = forms.CharField(max_length=30)
-##    Child_DBO  = forms.DateField()
+##    Child_DBO = forms.DateField()
 
 
 class SearchC (forms.Form):
     Child_First_Name  = forms.CharField()
+
 
 
    
