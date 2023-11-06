@@ -26,8 +26,8 @@ class parent(models.Model):
     Child_Address = models.CharField(max_length=200,null=False,blank=False)
     Sign_In_Date = models.DateField()
     Sign_Out_Date = models.DateField()
-    Sign_In_Time =
-    Sign_Out_Time =
+    Sign_In_Time = models.TimeField()
+    Sign_Out_Time = models.TimeField()
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
 
 class employee(models.Model):
@@ -36,15 +36,15 @@ class employee(models.Model):
     Employee_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Employee_DOB  = models.DateField()
     Employee_Address = models.CharField(max_length=200,null=False,blank=False)
-    Classroom = models.
-    Hourly_Salary = models.
+    Classroom = models.CharField()
+    Hourly_Salary = models.IntegerField()
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
 
 class enrollments(models.Model):
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
-    Classroom = models.
-    Tuition_Fee = models.
+    Classroom = models.CharField ()   
+    Tuition_Fee = models.IntegerField ()
     Teacher_First_Name = models.CharField(max_length=200,null=False,blank=False)
     Teacher_Last_Name = models.CharField(max_length=200,null=False,blank=False)
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
@@ -66,17 +66,23 @@ class staff_attendance(models.Model):
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
     Teacher_First_Name = models.CharField(max_length=200,null=False,blank=False)
     Teacher_Last_Name = models.CharField(max_length=200,null=False,blank=False)
-    Hours_Worked = models.
-    Salary_Earned = models.
+    Hours_Worked = models.IntegerField()
+    Salary_Earned = models.IntegerField()
 
 class facility(models.Model):
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
     Facility_Address = models.CharField(max_length=200,null=False,blank=False)
-    Facility_Phone = models.
+    Facility_Phone = models.IntegerField()
     License_Number = models.IntegerField()
     Admin_Name = models.CharField(max_length=200,null=False,blank=False)
     Admin_Email = models.CharField(max_length=200,null=False,blank=False)
-    Admin_Phone = 
+    Admin_Phone = models.IntegerField()
 
 
-
+class admin(models.model):
+    Admin_Name = models.CharField(max_length=200,null=False,blank=False)
+    Admin_Email = models.CharField(max_length=200,null=False,blank=False)
+    Admin_Phone = models.IntegerField()
+    Facility_Name = models.CharField(max_length=200,null=False,blank=False)
+    Facility_Address = models.CharField(max_length=200,null=False,blank=False)
+    Facility_Phone = models.IntegerField()
