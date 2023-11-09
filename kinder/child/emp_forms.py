@@ -23,7 +23,7 @@ class EmployeeForm(forms.Form):
     Employee_Salary  = forms.DecimalField(label='Employee Salary')
     Employee_Class_Num= forms.CharField(label='Employee Class Number')
 
-
+#Terminate employee
 class SearchEmp (forms.Form):
     Employee_First_Name  = forms.CharField()
    
