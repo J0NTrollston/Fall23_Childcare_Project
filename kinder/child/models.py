@@ -2,6 +2,8 @@
 from django.db import models
 from django.db.models import Model
 
+# Create your models here.
+
 class child(models.Model):
     Child_id = models.UUIDField(primary_key = True, editable = False)
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
@@ -86,3 +88,4 @@ class admin(models.model):
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
     Facility_Address = models.CharField(max_length=200,null=False,blank=False)
     Facility_Phone = models.IntegerField()
+
