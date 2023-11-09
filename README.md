@@ -1,13 +1,29 @@
 # Fall23_Childcare_Project
+## Members: 
+Brandon Ramos, Eriel Molina, Emily Chamberlain, Nil Ashokbhai Gopani
 
 ## Setup (Windows)
-Python 3.11.0
+Download Python 3.11.0
 
 In visual studios code, open empty project. Go to CMD terminal and check
-python --version
+At the root level, run the virtual machine
+NOTE: you can check this directory by using `Fall23_Childcare_Project\kinder> dir`
 
-In the appropriate directory, use:
+### Useful Commands:
+```cmd
+python --version
+```
+
+```cmd
 python -m venv .venv
-then activate virtual machine by:
+```
+
+Activate virtual machine use `Fall23_Childcare_Project> .venv\Scripts\activate.bat`
+```cmd
 .venv\Scripts\activate.bat
-NOTE: you can check this directory by using dir instead of ls
+```
+
+To run the project use `Fall23_Childcare_Project\kinder>`
+```cmd
+python manage.py runserver
+```
