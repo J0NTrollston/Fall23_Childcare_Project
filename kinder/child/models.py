@@ -5,7 +5,7 @@ from django.db.models import Model
 # Create your models here.
 
 class child(models.Model):
-    Child_id = models.UUIDField(primary_key = True, editable = False)
+    #Child_id = models.UUIDField(primary_key = True, editable = False)
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_DoB  = models.DateField(max_length=9,null=False,blank=False)
@@ -15,7 +15,7 @@ class child(models.Model):
     Parent_Last_Name = models.CharField(max_length=200,null=False,blank=False)
     Parent_Phone = models.CharField(max_length=10,null=False,blank=False)
     Parent_Address = models.CharField(max_length=200,null=False,blank=False)
-    Consent_Box = models.CharField(max_length=200,null=False,blank=False)
+    #Consent_Box = models.CharField(max_length=200,null=False,blank=False)
     
     ##geeks_field = models.CharField(max_length = 200)
 ##    c_lname  = models.CharField(max_length=30)
@@ -46,14 +46,14 @@ class employee(models.Model):
     Employee_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Employee_DOB  = models.DateField()
     Employee_Address = models.CharField(max_length=200,null=False,blank=False)
-    Classroom = models.CharField()
+    Classroom = models.CharField(max_length=200)
     Hourly_Salary = models.IntegerField()
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
 
 class enrollments(models.Model):
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
-    Classroom = models.CharField ()   
+    Classroom = models.CharField (max_length=200)   
     Tuition_Fee = models.IntegerField ()
     Teacher_First_Name = models.CharField(max_length=200,null=False,blank=False)
     Teacher_Last_Name = models.CharField(max_length=200,null=False,blank=False)
@@ -89,7 +89,7 @@ class facility(models.Model):
     Admin_Phone = models.IntegerField()
 
 
-class admin(models.model):
+class admin(models.Model):
     Admin_Name = models.CharField(max_length=200,null=False,blank=False)
     Admin_Email = models.CharField(max_length=200,null=False,blank=False)
     Admin_Phone = models.IntegerField()

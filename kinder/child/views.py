@@ -35,8 +35,8 @@ def register(request):
             child_parent_phone = form.cleaned_data['Parent_Phone']
             child_parent_address = form.cleaned_data['Parent_Address']
 
-            concent_box = form.cleaned_data['Concent_Box']
-            chi = child.objects.create(Child_First_Name = child_fname, Child_Last_Name = child_lname, Child_DoB = Child_DoB, Child_allergies=child_aler,Parent_First_Name = child_parent_fname, Parent_Last_Name = child_parent_lname, Parent_Phone = child_parent_phone, Parent_Address = child_parent_address, Concent_Box = concent_box) 
+            #concent_box = form.cleaned_data['Concent_Box']   , Concent_Box = concent_box
+            chi = child.objects.create(Child_First_Name = child_fname, Child_Last_Name = child_lname, Child_DoB = child_dob_Date, Child_allergies=child_aler,Parent_First_Name = child_parent_fname, Parent_Last_Name = child_parent_lname, Parent_Phone = child_parent_phone, Parent_Address = child_parent_address) 
 
             chi.save()
             return render(request,'ack.html',{'title':"Child Registered Successfully"}) 
