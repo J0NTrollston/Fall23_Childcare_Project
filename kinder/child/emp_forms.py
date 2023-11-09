@@ -26,15 +26,4 @@ class EmployeeForm(forms.Form):
 
 class SearchEmp (forms.Form):
     Employee_First_Name  = forms.CharField()
-
-
-    
-
-  
-
-
-
-
-
-
    
