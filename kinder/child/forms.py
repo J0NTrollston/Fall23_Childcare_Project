@@ -5,6 +5,9 @@ from .models import child
 class DateInput(forms.DateInput):
     input_type = 'date'
 
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
+
 class ChilForm(forms.Form):
     Child_First_Name  = forms.CharField(label='Child First Name')
     Child_Last_Name  = forms.CharField(label='Child Last Name')
@@ -29,6 +32,28 @@ class ChilForm(forms.Form):
 
 class SearchC (forms.Form):
     Child_First_Name  = forms.CharField()
+
+
+class ChildAttendance (forms.Form):
+    Sign_In_Date = forms.DateField(label = 'Sign In Date',widget=DateInput)
+    Sign_Out_Date = forms.DateField(label = 'Sign Out Date',widget=DateInput)
+    Sign_In_Time = forms.TimeField(label = 'Sign In Time',widget=TimeInput)
+    Sign_Out_Time = forms.TimeField(label = 'Sign Out Time',widget=TimeInput)
+    Facility_Name = forms.CharField(label='Facility Name')
+    Child_First_Name  = forms.CharField(label='Child First Name')
+    Child_Last_Name  = forms.CharField(label='Child Last Name')
+
+class EmpAttendance (forms.Form):
+    Sign_In_Date = forms.DateField(label = 'Sign In Date',widget=DateInput)
+    Sign_Out_Date = forms.DateField(label = 'Sign Out Date',widget=DateInput)
+    Sign_In_Time = forms.TimeField(label = 'Sign In Time',widget=TimeInput)
+    Sign_Out_Time = forms.TimeField(label = 'Sign Out Time',widget=TimeInput)
+    Facility_Name = forms.CharField(label='Facility Name')
+    Teacher_First_Name  = forms.CharField(label='Teacher First Name')
+    Teacher_Last_Name  = forms.CharField(label='Teacher Last Name')
+    
+
+
 
 
 

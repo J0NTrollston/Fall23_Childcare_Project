@@ -41,11 +41,12 @@ class parent(models.Model):
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
 
 class employee(models.Model):
-    employee_id = models.UUIDField(primary_key = True, editable = False)
+    #employee_id = models.UUIDField(primary_key = True, editable = False)
     Employee_First_Name = models.CharField(max_length=200,null=False,blank=False)
     Employee_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
-    Employee_DOB  = models.DateField()
+    Employee_DOB  = models.DateField(max_length=9,null=False,blank=False)
     Employee_Address = models.CharField(max_length=200,null=False,blank=False)
+    Employee_Phone_Number  = models.CharField(max_length=200,null=False,blank=False)
     Classroom = models.CharField(max_length=200)
     Hourly_Salary = models.IntegerField()
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
@@ -60,22 +61,22 @@ class enrollments(models.Model):
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
 
 class child_attendance(models.Model):
-    Sign_In_Date = models.DateField()
-    Sign_Out_Date = models.DateField()
-    Sign_In_Time = models.TimeField()
-    Sign_Out_Time = models.TimeField()
+    Sign_In_Date = models.DateField(max_length=9,null=False,blank=False)
+    Sign_Out_Date = models.DateField(max_length=9,null=False,blank=False)
+    Sign_In_Time = models.TimeField(max_length=30,null=False,blank=False)
+    Sign_Out_Time = models.TimeField(max_length=30,null=False,blank=False)
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
 
 class staff_attendance(models.Model):
-    Sign_In_Date = models.DateField()
-    Sign_Out_Date = models.DateField()
-    Sign_In_Time = models.TimeField()
-    Sign_Out_Time = models.TimeField()
+    Sign_In_Date = models.DateField(max_length=9,null=False,blank=False)
+    Sign_Out_Date = models.DateField(max_length=9,null=False,blank=False)
+    Sign_In_Time = models.TimeField(max_length=30,null=False,blank=False)
+    Sign_Out_Time = models.TimeField(max_length=30,null=False,blank=False)
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
-    Teacher_First_Name = models.CharField(max_length=200,null=False,blank=False)
-    Teacher_Last_Name = models.CharField(max_length=200,null=False,blank=False)
+    Teacher_First_Name  = models.CharField(max_length=200,null=False,blank=False)
+    Teacher_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Hours_Worked = models.IntegerField()
     Salary_Earned = models.IntegerField()
 

@@ -44,7 +44,17 @@ from child.views  import (
     home,
     )
 
+from child.views  import (
+    entity,
+    )
 
+from child.views  import (
+    atendance,
+    )
+
+from child.views  import (
+    emp_atendance,
+    )
 
 
 
@@ -58,5 +68,8 @@ urlpatterns = [
     path('search/',search),
     path('dropout/',dropout),
     path('terminate/',dropout_Emp),
+    path('entity/',entity),
+    path('atendance/',atendance),
+     path('atendance_emp/',emp_atendance),
 ]
 
