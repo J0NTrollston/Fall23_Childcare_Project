@@ -56,6 +56,10 @@ from child.views  import (
     emp_atendance,
     )
 
+from child.views  import (
+    concent_form,
+    )
+
 
 
 urlpatterns = [
@@ -71,5 +75,6 @@ urlpatterns = [
     path('entity/',entity),
     path('atendance/',atendance),
      path('atendance_emp/',emp_atendance),
+     path('reg/concent_form/',concent_form),
 ]
 

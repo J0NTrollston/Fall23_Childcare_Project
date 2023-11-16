@@ -8,6 +8,10 @@ class DateInput(forms.DateInput):
 class TimeInput(forms.TimeInput):
     input_type = 'time'
 
+#class MyForm(forms.Form):
+ #   my_checkbox = forms.BooleanField(label='My Checkbox', required=False, widget=forms.CheckboxInput(attrs={'class': 'checkbox-class'}))
+
+
 class ChilForm(forms.Form):
     Child_First_Name  = forms.CharField(label='Child First Name')
     Child_Last_Name  = forms.CharField(label='Child Last Name')
@@ -20,6 +24,7 @@ class ChilForm(forms.Form):
     Parent_Address = forms.CharField(label='Parent Address')
 
     #Consent_Box = forms.CharField(label='Please type in your initials to confirm you have read the concent form and agree to it\'s conditions')
+    my_checkbox = forms.BooleanField(label='My Checkbox', required=False, widget=forms.CheckboxInput(attrs={'class': 'checkbox-class'}))
 
 
 ##    c_lname  = forms.CharField(max_length=30)

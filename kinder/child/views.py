@@ -31,6 +31,11 @@ def entity(request):
     return render(request,'entity.html')
 
 
+# Create your views here.
+def concent_form(request):
+    return render(request,'concent_form.html')
+
+
 def register(request):
     title="Child Registration"
     if request.method == 'POST':

@@ -15,7 +15,7 @@ class child(models.Model):
     Parent_Last_Name = models.CharField(max_length=200,null=False,blank=False)
     Parent_Phone = models.CharField(max_length=10,null=False,blank=False)
     Parent_Address = models.CharField(max_length=200,null=False,blank=False)
-    #Consent_Box = models.CharField(max_length=200,null=False,blank=False)
+    Consent_Box = models.CharField(max_length=200,null=False,blank=False)
     
     ##geeks_field = models.CharField(max_length = 200)
 ##    c_lname  = models.CharField(max_length=30)
