@@ -81,11 +81,11 @@ def atendance(request):
             child_fname= form.cleaned_data['Child_First_Name']
             child_lname= form.cleaned_data['Child_Last_Name']
             
-            chi = child.objects.create(Sign_In_Date = Sign_In_Da, Sign_Out_Date = Sign_Out_Da, Sign_In_Time = Sign_In_Ti,Sign_Out_Time=Sign_Out_Ti,Facility_Name=Facility_Nam,Child_First_Name=child_fname  ,Child_Last_Name=child_lname) 
+            chi = child_attendance.objects.create(Sign_In_Date = Sign_In_Da, Sign_Out_Date = Sign_Out_Da, Sign_In_Time = Sign_In_Ti,Sign_Out_Time=Sign_Out_Ti,Facility_Name=Facility_Nam,Child_First_Name=child_fname  ,Child_Last_Name=child_lname) 
             #, Child_allergies=child_aler,Parent_First_Name = child_parent_fname, Parent_Last_Name = child_parent_lname, Parent_Phone = child_parent_phone, Parent_Address = child_parent_address
 
             chi.save()
-            return render(request,'ack.html',{'title':"Child Registered Successfully"}) 
+            return render(request,'ack.html',{'title':"Child Attendance Successfully"}) 
     form=ChildAttendance()
     context={
     'title':title,
@@ -108,7 +108,7 @@ def emp_atendance(request):
             emp_fname= form.cleaned_data['Teacher_First_Name']
             emp_lname= form.cleaned_data['Teacher_Last_Name']
                         
-            chi = child.objects.create(Sign_In_Date = Sign_In_Da, Sign_Out_Date = Sign_Out_Da, Sign_In_Time = Sign_In_Ti,Sign_Out_Time=Sign_Out_Ti,Facility_Name=Facility_Nam,Teacher_First_Name=emp_fname  ,Teacher_Last_Name=emp_lname) 
+            chi = staff_attendance.objects.create(Sign_In_Date = Sign_In_Da, Sign_Out_Date = Sign_Out_Da, Sign_In_Time = Sign_In_Ti,Sign_Out_Time=Sign_Out_Ti,Facility_Name=Facility_Nam,Teacher_First_Name=emp_fname  ,Teacher_Last_Name=emp_lname) 
            
             chi.save()
             return render(request,'ack.html',{'title':"Employee Registered Successfully"}) 

@@ -38,7 +38,7 @@ class ChilForm(forms.Form):
 class SearchC (forms.Form):
     Child_First_Name  = forms.CharField()
 
-
+#widget=forms.TimeInput(format='%H:%M')
 class ChildAttendance (forms.Form):
     Sign_In_Date = forms.DateField(label = 'Sign In Date',widget=DateInput)
     Sign_Out_Date = forms.DateField(label = 'Sign Out Date',widget=DateInput)

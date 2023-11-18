@@ -24,6 +24,7 @@ class child(models.Model):
 ##    c_school  = models.CharField(max_length=30)
 ##    c_enmail  = models.CharField(max_length=30)
 
+
 class parent(models.Model):
     Parent_id = models.UUIDField(primary_key = True, editable = False)
     Parent_First_Name  = models.CharField(max_length=200,null=False,blank=False)
@@ -90,7 +91,7 @@ class facility(models.Model):
     Admin_Phone = models.IntegerField()
 
 
-class admin(models.Model):
+class admin_user(models.Model):
     Admin_Name = models.CharField(max_length=200,null=False,blank=False)
     Admin_Email = models.CharField(max_length=200,null=False,blank=False)
     Admin_Phone = models.IntegerField()
