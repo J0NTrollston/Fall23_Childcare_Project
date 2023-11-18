@@ -1,11 +1,11 @@
-##import uuid
+
 from django.db import models
 from django.db.models import Model
 
 # Create your models here.
 
 class child(models.Model):
-    #Child_id = models.UUIDField(primary_key = True, editable = False)
+    Child_id = models.UUIDField(primary_key = True, editable = False)
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_DoB  = models.DateField(max_length=9,null=False,blank=False)
@@ -15,14 +15,7 @@ class child(models.Model):
     Parent_Last_Name = models.CharField(max_length=200,null=False,blank=False)
     Parent_Phone = models.CharField(max_length=10,null=False,blank=False)
     Parent_Address = models.CharField(max_length=200,null=False,blank=False)
-    #Consent_Box = models.CharField(max_length=200,null=False,blank=False)
-    
-    ##geeks_field = models.CharField(max_length = 200)
-##    c_lname  = models.CharField(max_length=30)
-##    c_class  = models.CharField(max_length=30)
-##    c_addr  = models.CharField(max_length=30)
-##    c_school  = models.CharField(max_length=30)
-##    c_enmail  = models.CharField(max_length=30)
+    Consent_Box = models.CharField(max_length=200,null=False,blank=False)
 
 class parent(models.Model):
     Parent_id = models.UUIDField(primary_key = True, editable = False)
