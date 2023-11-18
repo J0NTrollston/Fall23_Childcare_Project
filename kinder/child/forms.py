@@ -15,13 +15,13 @@ class ChilForm(forms.Form):
     Parent_Last_Name  = forms.CharField(label='Parent Last Name')
     Parent_Phone = forms.CharField(label='Parent Phone Number')
     Parent_Address = forms.CharField(label='Parent Address')
-
     Consent_Box = forms.CharField(label='Please type in your initials to confirm you have read the concent form and agree to it\'s conditions')
 
 
 class SearchC (forms.Form):
     Child_First_Name  = forms.CharField()
     Child_Last_Name = forms.CharField()
+
 
 
    

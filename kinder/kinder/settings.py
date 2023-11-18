@@ -125,3 +125,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+FLAGS = {
+    'FLAG_WITH_EMPTY_CONDITIONS': [],
+    'FLAG_WITH_ANY_CONDITIONS': [
+        {'condition': 'condition name', 'value': 'expected value to be enabled'},
+        {'condition': 'user', 'value': 'admin'},
+    ],
+    'FLAG_WITH_REQUIRED_CONDITIONS': [
+        {'condition': 'user', 'value': 'admin'},
+        {'condition': 'path matches', 'value': r'admin', 'required': True},
+    ]
+}
