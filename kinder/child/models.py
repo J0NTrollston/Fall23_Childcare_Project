@@ -7,7 +7,7 @@ from django.db.models import Model
 class child(models.Model):
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
-    Child_DoB  = models.DateField(max_length=9,null=False,blank=False)
+    Child_DOB  = models.DateField(max_length=9,null=False,blank=False)
     Child_allergies  = models.CharField(max_length=200,null=False,blank=False)
     Parent_First_Name = models.CharField(max_length=200,null=False,blank=False)
     Parent_Last_Name = models.CharField(max_length=200,null=False,blank=False)
@@ -43,6 +43,7 @@ class employee(models.Model):
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
 
 class enrollments(models.Model):
+    startDate = models.DateField()
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Classroom = models.CharField (max_length=200)   
@@ -89,3 +90,11 @@ class admin(models.Model):
     Facility_Address = models.CharField(max_length=200,null=False,blank=False)
     Facility_Phone = models.IntegerField()
 
+
+class payment(models.Model):
+    transactionID = models.AutoField(max_length=10, null=False,blank=False)
+    price = models.IntegerField()
+    cardNum = models.IntegerField()
+    cvvNum = models.IntegerField()
+    expMonth = models.IntegerField()
+    expYear = models.IntegerField()
