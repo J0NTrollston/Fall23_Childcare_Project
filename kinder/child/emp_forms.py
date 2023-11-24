@@ -10,6 +10,7 @@ from .models import employee
 class EmployeeForm(forms.Form):
     Employee_First_Name  = forms.CharField(label='Employee First Name')
     Employee_Last_Name  = forms.CharField(label='Employee Last Name')
+    Employee_Email = forms.CharField(label='Employee Email')
     Employee_DOB  = forms.DateField(label = 'Employee Date of Birth',widget=DateInput)
     Employee_Address= forms.CharField(label='Employee Address')
     Employee_Phone_Number  = forms.CharField(label='Employee Phone Number')

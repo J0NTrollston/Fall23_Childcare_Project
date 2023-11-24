@@ -60,7 +60,18 @@ from child.views  import (
     concent_form,
     )
 
+# from child.views  import (
+#     updaterecord,
+#     )
 
+from child.views  import (
+    updateData,
+    )
+
+
+from child.views  import (
+    showatten,
+    )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -74,7 +85,10 @@ urlpatterns = [
     path('terminate/',dropout_Emp),
     path('entity/',entity),
     path('atendance/',atendance),
-     path('atendance_emp/',emp_atendance),
-     path('reg/concent_form/',concent_form),
+    path('atendance_emp/',emp_atendance),
+    path('reg/concent_form/',concent_form),
+    #path('search/updaterecord/', updaterecord, name='updaterecord')
+    path('update/<id>',updateData,name="updateData"),
+    path('atendance/<id>',showatten,name="showatten"),
 ]
 

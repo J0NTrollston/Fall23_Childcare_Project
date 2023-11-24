@@ -17,6 +17,9 @@ from .emp_forms import EmployeeForm
 from .emp_forms import SearchEmp
 from .models import employee 
 
+from django.contrib import messages
+from django.shortcuts import render,redirect
+
 
 # Create your views here.
 def home_page(request):
@@ -49,11 +52,13 @@ def register(request):
             #parent information
             child_parent_fname = form.cleaned_data['Parent_First_Name']
             child_parent_lname = form.cleaned_data['Parent_Last_Name']
+            child_parent_email = form.cleaned_data['Parent_Email']
             child_parent_phone = form.cleaned_data['Parent_Phone']
             child_parent_address = form.cleaned_data['Parent_Address']
 
             #concent_box = form.cleaned_data['Concent_Box']   , Concent_Box = concent_box
-            chi = child.objects.create(Child_First_Name = child_fname, Child_Last_Name = child_lname, Child_DoB = child_dob_Date, Child_allergies=child_aler,Parent_First_Name = child_parent_fname, Parent_Last_Name = child_parent_lname, Parent_Phone = child_parent_phone, Parent_Address = child_parent_address) 
+            chi = child.objects.create(Child_First_Name = child_fname, Child_Last_Name = child_lname, Child_DoB = child_dob_Date, Child_allergies=child_aler,Parent_First_Name = child_parent_fname
+                                       , Parent_Last_Name = child_parent_lname, Parent_Phone = child_parent_phone, Parent_Address = child_parent_address, Parent_Email = child_parent_email) 
 
             chi.save()
             return render(request,'ack.html',{'title':"Child Registered Successfully"}) 
@@ -128,6 +133,7 @@ def reg_employee(request):
         if emp_form.is_valid():
             emp_fname= emp_form.cleaned_data['Employee_First_Name']
             emp_lname= emp_form.cleaned_data['Employee_Last_Name']
+            emp_email = emp_form.cleaned_data['Employee_Email']
             emp_dbo= emp_form.cleaned_data['Employee_DOB']
             emp_add= emp_form.cleaned_data['Employee_Address']
             emp_phone= emp_form.cleaned_data['Employee_Phone_Number']
@@ -143,7 +149,8 @@ def reg_employee(request):
                                             Employee_Phone_Number= emp_phone,
                                             Classroom= emp_class_num, 
                                              Hourly_Salary= emp_salary,
-                                             Facility_Name= emp_Facility_Name
+                                             Facility_Name= emp_Facility_Name,
+                                             Employee_Email= emp_email
                                                )   
 
             emp.save()
@@ -167,6 +174,35 @@ def existing_child(request):
     }
     return render (request,'existing_child.html',context )
 
+def updateData(request,id):
+    if request.method=="POST":
+        name=request.POST['Child_First_Name']
+        lname=request.POST['Child_Last_Name']
+        caler=request.POST['Child_allergies']
+        pfirstname=request.POST['Parent_First_Name']
+        plastname=request.POST['Parent_Last_Name']
+        pemail=request.POST['Parent_Email']
+        pphone=request.POST['Parent_Phone']
+        paddress=request.POST['Parent_Address']
+
+        edit=child.objects.get(id=id)
+        edit.Child_First_Name=name
+        edit.Child_Last_Name=lname
+        edit.Child_allergies=caler
+        edit.Parent_First_Name=pfirstname
+        edit.Parent_Last_Name=plastname
+        edit.Parent_Email=pemail
+        edit.Parent_Phone=pphone
+        edit.Parent_Address=paddress
+
+        edit.save()
+        messages.warning(request,"Data Updated Successfully")
+        return render(request,'ack.html',{'title':"Data Updated Successfully"})
+        #return redirect("/")
+
+    d=child.objects.get(id=id) 
+    context={"d":d}
+    return render(request,"edit.html",context)
 
 
 
@@ -183,7 +219,7 @@ def search(request):
         'queryset':queryset,
         }
         return render(request,'existing_child.html',context)
-
+        #return render(request,'atendance.html',context)
 
     context={
     'title':title,
@@ -191,6 +227,26 @@ def search(request):
     }
     return render(request,'search.html',context)
 
+def showatten(request,id):
+    title="Search child"
+    form= SearchC(request.POST or None)
+    if form.is_valid():
+        name = form.cleaned_data['Child_First_Name']
+        queryset=child_attendance.objects.filter(Child_First_Name=name) 
+        if len(queryset)==0:
+            return render(request,'ack.html',{'title':'Child Not Found'})
+        context={
+        'title':title,
+        'queryset':queryset,
+        }
+        return render(request,'attendance_child.html',context)
+        #return render(request,'atendance.html',context)
+
+    context={
+    'title':title,
+    'form':form,
+    }
+    return render(request,'search.html',context)
 
 
 

@@ -6,21 +6,34 @@
     <thead>
         <tr>
             <tr>
-                <td>Num</td>
+                <td>Id</td>
                 <td>First Name</td>
                 <td>Last Name</td>
                 <td>Alergies</td>
-                <td>Parent Full Name</td>
+                <td>Parent First Name</td>
+                <td>Parent_Last_Name</td>
+                <td>Parent_Email</td>
+                <td>Parent_Phone</td>
+                <td>Parent_Address</td>
+                <th scope="col">Edit</th>
+                <th scope="col">Attendance</th>
             </tr>
         </thead>
-        {% for k in queryset %}
+        {% for d in queryset %}
         <tbody>
             <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{k.Child_First_Name}}</td>
-                <td>{{k.Child_Last_Name}}</td>
-                <td>{{k.Child_allergies}}</td>
-                <td>{{k.Parent_FullName}}</td>
+                <!-- <td>{{forloop.counter}}</td> -->
+                <th scope="row">{{d.id}}</th>
+                <td>{{d.Child_First_Name}}</td>
+                <td>{{d.Child_Last_Name}}</td>
+                <td>{{d.Child_allergies}}</td>
+                <td>{{d.Parent_First_Name}}</td>
+                <td>{{d.Parent_Last_Name}}</td>
+                <td>{{d.Parent_Email}}</td>
+                <td>{{d.Parent_Phone}}</td>
+                <td>{{d.Parent_Address}}</td>
+                <td><a type="button" href="/update/{{d.id}}" class="btn btn-outline-primary">Edit</a></td>
+                <td><a type="button" href="/atendance/{{d.id}}" class="btn btn-outline-primary">Attendance</a></td>
             </tr>
         </tbody>
         {% endfor %}
@@ -28,3 +41,7 @@
 
 
 </html>
+
+
+<!-- attendance_child -->
+<!-- href="/atendance/{{d.id}}" class="btn btn-outline-primary">Attendance</a></td> -->
