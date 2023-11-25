@@ -22,6 +22,12 @@ class SearchC (forms.Form):
     Child_First_Name  = forms.CharField()
     Child_Last_Name = forms.CharField()
 
-
+class paymentForm(forms.Form):
+    transactionID = forms.AutoField(max_length=10, null=False,blank=False)
+    price = forms.IntegerField()
+    cardNum = forms.IntegerField()
+    cvvNum = forms.IntegerField()
+    expMonth = forms.IntegerField()
+    expYear = forms.IntegerField()
 
    

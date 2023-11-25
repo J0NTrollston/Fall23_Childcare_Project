@@ -98,3 +98,25 @@ class payment(models.Model):
     cvvNum = models.IntegerField()
     expMonth = models.IntegerField()
     expYear = models.IntegerField()
+    Classroom = models.CharField (max_length=200)
+
+    def Price(Classroom):
+        if Classroom == 'Infant':
+            price = 300
+
+        elif Classroom == 'Toddler':
+            price = 275
+
+        elif Classroom == 'Twadler' :
+            price = 250
+
+        elif Classroom == '3 Years Old':
+            price = 225
+
+        elif Classroom == '4 Years Old':
+            price = 200
+
+        else:
+            print('Not a valid classroom')
+
+        return price

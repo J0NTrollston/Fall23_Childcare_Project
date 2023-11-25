@@ -159,9 +159,7 @@ def dropout_Emp(request):
     'title':title,
     'form':form,
     }
-    return render(request,'search.html',context)
-
-
+    return render(request,'search.html',context) 
 
 
 
