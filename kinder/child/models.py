@@ -1,6 +1,8 @@
-
+import random
+from django.http import HttpResponse
 from django.db import models
 from django.db.models import Model
+
 
 # Create your models here.
 
@@ -99,6 +101,9 @@ class payment(models.Model):
     expMonth = models.IntegerField()
     expYear = models.IntegerField()
     Classroom = models.CharField (max_length=200)
+    secret = models.CharField(max_length=1000, default="", blank=True)
+    paid = models.BooleanField(default=False)
+    checkout_url = models.CharField(max_length=1000, default="", blank=True)
 
     def Price(Classroom):
         if Classroom == 'Infant':
@@ -120,3 +125,13 @@ class payment(models.Model):
             print('Not a valid classroom')
 
         return price
+    
+    def generate_secret(self):
+        self.secret = str(random.randint(10000, 99999))
+    
+    def confirm(request, transactionID: int, payment_secret: str):
+        payment = payment.objects.get(pk=transactionID)
+        if payment.secret == payment_secret:
+            payment.paid = True
+            payment.save()
+        return HttpResponse("OK")  
