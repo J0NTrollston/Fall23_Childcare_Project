@@ -22,6 +22,7 @@ class child(models.Model):
     Parent_Email = models.CharField(max_length=200,null=False,blank=False)
     Parent_Phone = models.CharField(max_length=10,null=False,blank=False)
     Parent_Address = models.CharField(max_length=200,null=False,blank=False)
+    Balance = models.IntegerField(null=True,blank=True)
     Consent_Box = models.CharField(max_length=200,null=False,blank=False)
    
 
@@ -77,7 +78,7 @@ class staff_attendance(models.Model):
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
     Teacher_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Teacher_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
-    Hours_Worked = models.IntegerField()
+    Hours_Worked = models.IntegerField(null=True)
     Salary_Earned = models.IntegerField()
 
 class facility(models.Model):

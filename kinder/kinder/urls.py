@@ -73,6 +73,20 @@ from child.views  import (
     showatten,
     )
 
+
+from child.views  import (
+    reports,
+    )
+
+from child.views  import (
+    balance_report,
+    )
+
+from child.views  import (
+    emp_report,
+    )
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name="home"),
@@ -80,6 +94,9 @@ urlpatterns = [
     path('reg/',register),
     path('emp/',reg_employee),
     path('exist/',existing_child),
+    path('report/',reports),
+    path('balance_report/',balance_report),
+    path('emp_reg/',emp_report),
     path('search/',search),
     path('dropout/',dropout),
     path('terminate/',dropout_Emp),

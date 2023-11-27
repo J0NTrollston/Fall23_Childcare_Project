@@ -54,6 +54,8 @@ class EmpAttendance (forms.Form):
     Facility_Name = forms.CharField(label='Facility Name')
     Teacher_First_Name  = forms.CharField(label='Teacher First Name')
     Teacher_Last_Name  = forms.CharField(label='Teacher Last Name')
+    #Hours_Worked = forms.IntegerField(label='Hours Worked')
+    #Salary_Earned = forms.IntegerField(label='Salary Earned')
     
 
 

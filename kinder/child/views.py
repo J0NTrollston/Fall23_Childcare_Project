@@ -174,6 +174,38 @@ def existing_child(request):
     }
     return render (request,'existing_child.html',context )
 
+def reports(request):
+    title="All Attendance"
+    queryset = child_attendance.objects.all()
+
+    context={
+        "title":title,
+        "queryset":queryset,
+    }
+    return render (request,'Attendance_reports.html',context )
+
+
+def balance_report(request):
+    title="Total Registered Children"
+    queryset = child.objects.all()
+
+    context={
+        "title":title,
+        "queryset":queryset,
+    }
+    return render (request,'balance_reports.html',context )
+
+
+def emp_report(request):
+    title="Total Registered Employee"
+    queryset = staff_attendance.objects.all()
+
+    context={
+        "title":title,
+        "queryset":queryset,
+    }
+    return render (request,'emp_report.html',context )
+
 def updateData(request,id):
     if request.method=="POST":
         name=request.POST['Child_First_Name']
@@ -184,6 +216,9 @@ def updateData(request,id):
         pemail=request.POST['Parent_Email']
         pphone=request.POST['Parent_Phone']
         paddress=request.POST['Parent_Address']
+        balance_child=request.POST['Balance']
+
+        #Balance
 
         edit=child.objects.get(id=id)
         edit.Child_First_Name=name
@@ -194,6 +229,7 @@ def updateData(request,id):
         edit.Parent_Email=pemail
         edit.Parent_Phone=pphone
         edit.Parent_Address=paddress
+        edit.Balance=balance_child
 
         edit.save()
         messages.warning(request,"Data Updated Successfully")
