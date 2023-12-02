@@ -63,46 +63,70 @@ jobs:
             .
             !venv/
 
+  # deploy:
+  #   permissions:
+  #     contents: none
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   environment:
+  #     name: 'Development'
+  #     url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+  #   steps:
+  #     - name: Credential Attempt
+  #       uses: Azure/login@v1
+  #       with: # Set Azure credentials secret as an input
+  #         creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+    
+  #     - name: Download artifact from build job
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: python-app
+  #         path: .
+
+  #     # - name: Credential Attempt
+  #     #   uses: Azure/login@v1
+  #     #   with: # Set Azure credentials secret as an input
+  #     #     credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+  #       # env: # Or as an environment variable
+  #       #   credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+          
+  #     - name: Debug Information
+  #       run: |
+  #         echo "Publish Profile Secret: ${{ secrets.YOUR_PUBLISH_PROFILE_SECRET_NAME }}"
+  #         env  # Print environment variables for debugging
+
+  #     # - uses: Azure/login@v1
+  #     #   with:
+  #     #     creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+          
+  #     - name: 'Deploy to Azure Web App'
+  #       id: deploy-to-webapp
+  #       uses: azure/webapps-deploy@v2
+  #       with:
+  #         app-name: ${{ env.AZURE_WEBAPP_NAME }}
+  #         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
   deploy:
-    permissions:
-      contents: none
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Development'
+      name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-      - name: Credential Attempt
-        uses: Azure/login@v1
-        with: # Set Azure credentials secret as an input
-          creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
     
+    steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
           name: python-app
-          path: .
 
-      # - name: Credential Attempt
-      #   uses: Azure/login@v1
-      #   with: # Set Azure credentials secret as an input
-      #     credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
-        # env: # Or as an environment variable
-        #   credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
-          
-      - name: Debug Information
-        run: |
-          echo "Publish Profile Secret: ${{ secrets.YOUR_PUBLISH_PROFILE_SECRET_NAME }}"
-          env  # Print environment variables for debugging
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
 
-      # - uses: Azure/login@v1
-      #   with:
-      #     creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
-          
+      
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
         with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+          app-name: 'CENChildProject'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_3f3cd7639b624b25a846752ff8be4a2f }}
