@@ -76,7 +76,7 @@ jobs:
       - name: Credential Attempt
         uses: Azure/login@v1
         with: # Set Azure credentials secret as an input
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+          creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
     
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
