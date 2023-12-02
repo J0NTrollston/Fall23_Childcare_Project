@@ -43,6 +43,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
+          cache-dependency-path: '**/setup.py'
       - run: pip install -r requirements.txt
           # cache-dependency-path: '**/setup.py'
 
