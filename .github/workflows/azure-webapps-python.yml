@@ -125,4 +125,4 @@ jobs:
         with:
           app-name: 'CENChildProject'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_3f3cd7639b624b25a846752ff8be4a2f }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
