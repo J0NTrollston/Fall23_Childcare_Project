@@ -88,7 +88,7 @@ jobs:
       - uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+          
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
