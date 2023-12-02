@@ -85,10 +85,10 @@ jobs:
         # env: # Or as an environment variable
         #   credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
           
-      - name: Debug Information
-        run: |
-          echo "Publish Profile Secret: ${{ secrets.YOUR_PUBLISH_PROFILE_SECRET_NAME }}"
-          # env  # Print environment variables for debugging
+      # - name: Debug Information
+      #   run: |
+      #     echo "Publish Profile Secret: ${{ secrets.YOUR_PUBLISH_PROFILE_SECRET_NAME }}"
+      #     # env  # Print environment variables for debugging
 
       # - uses: Azure/login@v1
       #   with:
