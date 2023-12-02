@@ -79,9 +79,9 @@ jobs:
         env: # Or as an environment variable
           credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
 
-      - uses: Azure/login@v1
-        with:
-            creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+      # - uses: Azure/login@v1
+      #   with:
+      #       creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
       
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
