@@ -79,11 +79,11 @@ jobs:
           name: python-app
           path: .
 
-      - name: Sample Azure action
+      - name: Credential Attempt
         with: # Set Azure credentials secret as an input
           credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
-        env: # Or as an environment variable
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+        # env: # Or as an environment variable
+        #   credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
           
       - name: Debug Information
         run: |
@@ -94,7 +94,6 @@ jobs:
       #   with:
       #     creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
           
-
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
