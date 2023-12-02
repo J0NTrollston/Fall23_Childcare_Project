@@ -38,31 +38,34 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # - name: Set up Python version
-      #   uses: actions/setup-python@v3.0.0
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Set up Python version
+        uses: actions/setup-python@v3.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: "${{ github.action_path }}/requirements.txt" # file not found
+      # - uses: actions/setup-python@v3
       #   with:
-      #     python-version: ${{ env.PYTHON_VERSION }}
-      #     cache: 'pip'
-      #     cache-dependency-path: "${{ github.action_path }}/requirements.txt" # file not found
-      - uses: actions/setup-python@v3
-        with:
-          python-version: '3'
-      - uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip
-      - run: pip install 'mydependency<2'
-        shell: bash
-      - run: ${{ github.action_path }}/myscript
-        shell: bash
+      #     python-version: '3'
+      # - uses: actions/cache@v3
+      #   with:
+      #     path: ~/.cache/pip
+      #     key: ${{ runner.os }}-pip
+      # - run: pip install 'mydependency<2'
+      #   shell: bash
+      # - run: ${{ github.action_path }}/myscript
+      #   shell: bash
 
       - name: Create and start virtual environment
         run: |
           python -m venv venv
           source venv/bin/activate
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      # - name: Install dependencies
+      #   run: pip install -r requirements.txt
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
