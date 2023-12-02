@@ -44,8 +44,52 @@ from child.views  import (
     home,
     )
 
+from child.views  import (
+    entity,
+    )
+
+from child.views  import (
+    atendance,
+    )
+
+from child.views  import (
+    emp_atendance,
+    )
+
+from child.views  import (
+    concent_form,
+    )
+
+# from child.views  import (
+#     updaterecord,
+#     )
+
+from child.views  import (
+    updateData,
+    )
 
 
+from child.views  import (
+    showatten,
+    )
+
+
+from child.views  import (
+    reports,
+    )
+
+from child.views  import (
+    balance_report,
+    )
+
+from child.views  import (
+    emp_report,
+    )
+
+
+from child.views  import (
+    login,
+    )
 
 
 urlpatterns = [
@@ -55,8 +99,19 @@ urlpatterns = [
     path('reg/',register),
     path('emp/',reg_employee),
     path('exist/',existing_child),
+    path('report/',reports),
+    path('balance_report/',balance_report),
+    path('emp_reg/',emp_report),
     path('search/',search),
     path('dropout/',dropout),
     path('terminate/',dropout_Emp),
+    path('entity/',entity),
+    path('atendance/',atendance),
+    path('atendance_emp/',emp_atendance),
+    path('reg/concent_form/',concent_form),
+    #path('search/updaterecord/', updaterecord, name='updaterecord')
+    path('update/<id>',updateData,name="updateData"),
+    path('atendance/<id>',showatten,name="showatten"),
+    path('log/',login),
 ]
 
