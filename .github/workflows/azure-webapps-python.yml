@@ -73,21 +73,17 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Sample Azure action
-        with: # Set Azure credentials secret as an input
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
-        env: # Or as an environment variable
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
-
-      # - uses: Azure/login@v1
-      #   with:
-      #       creds: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
-      
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
           name: python-app
           path: .
+
+      - name: Sample Azure action
+        with: # Set Azure credentials secret as an input
+          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
+        env: # Or as an environment variable
+          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISHED_PROFILE }}
           
       - name: Debug Information
         run: |
