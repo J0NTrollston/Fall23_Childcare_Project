@@ -24,7 +24,7 @@ class ChilForm(forms.Form):
     Child_First_Name  = forms.CharField(label='Child First Name')
     Child_Last_Name  = forms.CharField(label='Child Last Name')
     Child_allergies  = forms.CharField(label='Child Allergies')
-    Child_DoB = forms.DateField(label = 'Child Date of Birth',widget=DateInput)
+    Child_DOB = forms.DateField(label = 'Child Date of Birth',widget=DateInput)
     Parent_First_Name  = forms.CharField(label='Parent First Name')
     Parent_Last_Name  = forms.CharField(label='Parent Last Name')
     Parent_Email = forms.CharField(label='Parent Email')
@@ -32,7 +32,6 @@ class ChilForm(forms.Form):
     Parent_Phone = forms.CharField(label='Parent Phone Number')
     Parent_Address = forms.CharField(label='Parent Address')
     my_checkbox = forms.BooleanField(label='My Checkbox', required=False, widget=forms.CheckboxInput(attrs={'class': 'checkbox-class'}))
-
 
 class SearchC (forms.Form):
     Child_First_Name  = forms.CharField()
@@ -58,13 +57,21 @@ class EmpAttendance (forms.Form):
     #Hours_Worked = forms.IntegerField(label='Hours Worked')
     #Salary_Earned = forms.IntegerField(label='Salary Earned')
     
-
-
 class LoginForm(forms.Form):
     UserName  = forms.CharField(label='Email Address')
     Password  = forms.CharField(label='Password')
 
+class SearchC (forms.Form):
+    Child_First_Name  = forms.CharField()
+    Child_Last_Name = forms.CharField()
 
+class paymentForm(forms.Form):
+    transactionID = forms.AutoField(max_length=10, null=False,blank=False)
+    price = forms.IntegerField()
+    cardNum = forms.IntegerField()
+    cvvNum = forms.IntegerField()
+    expMonth = forms.IntegerField()
+    expYear = forms.IntegerField()
 
 class PaymentForm(forms.Form):
     cc_number = CardNumberField(label='Card Number')

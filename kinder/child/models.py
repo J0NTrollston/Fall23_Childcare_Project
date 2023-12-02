@@ -1,4 +1,5 @@
-##import uuid
+import random
+from django.http import HttpResponse
 from django.db import models
 from django.db.models import Model
 
@@ -11,11 +12,10 @@ assert types.get_type('343434343434343') == types.CC_TYPE_AMEX
 assert types.get_type('0000000000000000') == types.CC_TYPE_GENERIC
 
 # Create your models here.
-
 class child(models.Model):
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
-    Child_DoB  = models.DateField(max_length=9,null=False,blank=False)
+    Child_DOB  = models.DateField(max_length=9,null=False,blank=False)
     Child_allergies  = models.CharField(max_length=200,null=False,blank=False)
     Parent_First_Name = models.CharField(max_length=200,null=False,blank=False)
     Parent_Last_Name = models.CharField(max_length=200,null=False,blank=False)
@@ -25,12 +25,12 @@ class child(models.Model):
     Parent_Address = models.CharField(max_length=200,null=False,blank=False)
     Balance = models.IntegerField(null=True,blank=True)
     Consent_Box = models.CharField(max_length=200,null=False,blank=False)
-   
 
 class parent(models.Model):
     Parent_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Parent_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Parent_Phone = models.CharField(max_length=200,null=False,blank=False)
+    Parent_Email =  models.CharField(max_length=200,null=False,blank=False)
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_DOB  = models.DateField()
@@ -55,6 +55,7 @@ class employee(models.Model):
     Facility_Name = models.CharField(max_length=200,null=False,blank=False)
 
 class enrollments(models.Model):
+    startDate = models.DateField()
     Child_First_Name  = models.CharField(max_length=200,null=False,blank=False)
     Child_Last_Name  = models.CharField(max_length=200,null=False,blank=False)
     Classroom = models.CharField (max_length=200)   
@@ -102,7 +103,45 @@ class admin_user(models.Model):
     Facility_Phone = models.IntegerField()
 
 
-class Payment(models.Model):
-    cc_number = CardNumberField(('card number'))
-    cc_expiry = CardExpiryField(('expiration date'))
-    cc_code = SecurityCodeField(('security code'))
+class payment(models.Model):
+    transactionID = models.AutoField(max_length=10, null=False,blank=False)
+    price = models.IntegerField()
+    cardNum = models.IntegerField()
+    cvvNum = models.IntegerField()
+    expMonth = models.IntegerField()
+    expYear = models.IntegerField()
+    Classroom = models.CharField (max_length=200)
+    secret = models.CharField(max_length=1000, default="", blank=True)
+    paid = models.BooleanField(default=False)
+    checkout_url = models.CharField(max_length=1000, default="", blank=True)
+
+    def Price(Classroom):
+        if Classroom == 'Infant':
+            price = 300
+
+        elif Classroom == 'Toddler':
+            price = 275
+
+        elif Classroom == 'Twadler' :
+            price = 250
+
+        elif Classroom == '3 Years Old':
+            price = 225
+
+        elif Classroom == '4 Years Old':
+            price = 200
+
+        else:
+            print('Not a valid classroom')
+
+        return price
+    
+    def generate_secret(self):
+        self.secret = str(random.randint(10000, 99999))
+    
+    def confirm(request, transactionID: int, payment_secret: str):
+        payment = payment.objects.get(pk=transactionID)
+        if payment.secret == payment_secret:
+            payment.paid = True
+            payment.save()
+        return HttpResponse("OK")  

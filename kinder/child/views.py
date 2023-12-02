@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 
 from .forms import LoginForm
@@ -12,6 +13,8 @@ from .models import child_attendance
 
 from .forms import EmpAttendance
 from .models import staff_attendance 
+
+from .models import payment
 
 from .forms import ChilForm
 from .forms import SearchC
@@ -333,8 +336,6 @@ def dropout_Emp(request):
     return render(request,'search.html',context)
 
 
-
-
 def login(request):
     title="Login Information"
     if request.method == 'POST':
@@ -359,3 +360,26 @@ def login(request):
     return render(request,'login.html',context)
 
 
+def processPayment(request):
+    # Generate an order
+    payment = payment.objects.create(
+        #amount=1000,  # enter amount here
+    )
+
+    payment.generate_secret()
+    payment.save()
+
+    # Payment data
+    data = {
+        "amount": payment.price,
+        "success_url": f"https://website.com/confirm/{payment.transactionID}/{payment.secret}",
+        "back_url": f"https://website.com/orders/{payment.transactionID}",
+    }
+    url="https://stage-api.ioka.kz/v2/orders"
+    response = request.post(url, headers={
+        "API-KEY": TEST_API_KEY,  
+        "Content-Type": "application/json"
+    }, data = JsonResponse.dumps(data))
+    payment.checkout_url = response['payment']["checkout_url"]
+    payment.save()
+    return HttpResponse.redirect(payment.checkout_url)
