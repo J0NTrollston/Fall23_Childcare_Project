@@ -43,7 +43,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
-          cache-dependency-path: '**/setup.py'
+          # cache-dependency-path: '**/setup.py'
 
       - name: Create and start virtual environment
         run: |
