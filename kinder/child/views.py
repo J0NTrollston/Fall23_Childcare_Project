@@ -1,6 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from .forms import LoginForm
+
+
 from .forms import ChilForm
 from .models import child 
 
@@ -53,12 +56,13 @@ def register(request):
             child_parent_fname = form.cleaned_data['Parent_First_Name']
             child_parent_lname = form.cleaned_data['Parent_Last_Name']
             child_parent_email = form.cleaned_data['Parent_Email']
+            passw= form.cleaned_data['Password']
             child_parent_phone = form.cleaned_data['Parent_Phone']
             child_parent_address = form.cleaned_data['Parent_Address']
 
             #concent_box = form.cleaned_data['Concent_Box']   , Concent_Box = concent_box
             chi = child.objects.create(Child_First_Name = child_fname, Child_Last_Name = child_lname, Child_DoB = child_dob_Date, Child_allergies=child_aler,Parent_First_Name = child_parent_fname
-                                       , Parent_Last_Name = child_parent_lname, Parent_Phone = child_parent_phone, Parent_Address = child_parent_address, Parent_Email = child_parent_email) 
+                                       , Parent_Last_Name = child_parent_lname, Parent_Phone = child_parent_phone , Parent_Address = child_parent_address, Parent_Email = child_parent_email,Password = passw) 
 
             chi.save()
             return render(request,'ack.html',{'title':"Child Registered Successfully"}) 
@@ -134,6 +138,7 @@ def reg_employee(request):
             emp_fname= emp_form.cleaned_data['Employee_First_Name']
             emp_lname= emp_form.cleaned_data['Employee_Last_Name']
             emp_email = emp_form.cleaned_data['Employee_Email']
+            emp_pass = emp_form.cleaned_data['Password']
             emp_dbo= emp_form.cleaned_data['Employee_DOB']
             emp_add= emp_form.cleaned_data['Employee_Address']
             emp_phone= emp_form.cleaned_data['Employee_Phone_Number']
@@ -150,7 +155,8 @@ def reg_employee(request):
                                             Classroom= emp_class_num, 
                                              Hourly_Salary= emp_salary,
                                              Facility_Name= emp_Facility_Name,
-                                             Employee_Email= emp_email
+                                             Employee_Email= emp_email,
+                                              Password= emp_pass
                                                )   
 
             emp.save()
@@ -329,6 +335,27 @@ def dropout_Emp(request):
 
 
 
+def login(request):
+    title="Login Information"
+    if request.method == 'POST':
+        form=LoginForm(request.POST)
+        if form.is_valid():
+            #child information
+            loginN= form.cleaned_data['UserName']
+            passw= form.cleaned_data['Password']
+          
 
+            #concent_box = form.cleaned_data['Concent_Box']   , Concent_Box = concent_box
+            chi = child.objects.create(UserName = loginN, Password = passw) 
+
+            chi.save()
+            return render(request,'ack.html',{'title':"User Login Successfully"}) 
+    form=LoginForm()
+    context={
+    'title':title,
+    'form':form,
+    }
+
+    return render(request,'login.html',context)
 
 

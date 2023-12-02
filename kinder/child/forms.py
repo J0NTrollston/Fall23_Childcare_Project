@@ -28,6 +28,7 @@ class ChilForm(forms.Form):
     Parent_First_Name  = forms.CharField(label='Parent First Name')
     Parent_Last_Name  = forms.CharField(label='Parent Last Name')
     Parent_Email = forms.CharField(label='Parent Email')
+    Password  = forms.CharField(label='Password')
     Parent_Phone = forms.CharField(label='Parent Phone Number')
     Parent_Address = forms.CharField(label='Parent Address')
     my_checkbox = forms.BooleanField(label='My Checkbox', required=False, widget=forms.CheckboxInput(attrs={'class': 'checkbox-class'}))
@@ -58,6 +59,10 @@ class EmpAttendance (forms.Form):
     #Salary_Earned = forms.IntegerField(label='Salary Earned')
     
 
+
+class LoginForm(forms.Form):
+    UserName  = forms.CharField(label='Email Address')
+    Password  = forms.CharField(label='Password')
 
 
 

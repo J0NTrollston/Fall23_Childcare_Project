@@ -87,6 +87,11 @@ from child.views  import (
     )
 
 
+from child.views  import (
+    login,
+    )
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name="home"),
@@ -107,5 +112,6 @@ urlpatterns = [
     #path('search/updaterecord/', updaterecord, name='updaterecord')
     path('update/<id>',updateData,name="updateData"),
     path('atendance/<id>',showatten,name="showatten"),
+    path('log/',login),
 ]
 
