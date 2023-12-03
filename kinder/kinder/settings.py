@@ -117,7 +117,7 @@ USE_TZ = True
 STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
 STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")
 
-FRONTEND_DIR = "path" 
+FRONTEND_DIR = "https://cenchildproject.azurewebsites.net/" 
 STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'build', 'static')]    
 
 
