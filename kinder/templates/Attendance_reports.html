@@ -1,0 +1,38 @@
+<html>
+{% include "master.html" %}
+<center><h1>{{title}}</h1></center></center>
+
+<table align='center' border =2>
+    <thead>
+        <tr>
+            <tr>
+                <td>Id</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Sign In Date</td>
+                <td>Sign In Time</td>
+                <td>Sign Out Date</td>
+                <td>Sign Out Time</td>
+            </tr>
+        </thead>
+        {% for d in queryset %}
+        <tbody>
+            <tr>
+                <!-- <td>{{forloop.counter}}</td> -->
+                <th scope="row">{{d.id}}</th>
+                <td>{{d.Child_First_Name}}</td>
+                <td>{{d.Child_Last_Name}}</td>
+                <td>{{d.Sign_In_Date}}</td>
+                <td>{{d.Sign_Out_Date}}</td>
+                <td>{{d.Sign_In_Time}}</td>
+                <td>{{d.Sign_Out_Time}}</td>
+                              
+               
+            </tr>
+        </tbody>
+        {% endfor %}
+</table>
+
+
+</html>
+

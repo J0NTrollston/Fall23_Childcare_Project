@@ -1,7 +1,8 @@
 from django import forms
 ##from .models import child 
 
-
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 from .models import employee 
@@ -9,19 +10,14 @@ from .models import employee
 class EmployeeForm(forms.Form):
     Employee_First_Name  = forms.CharField(label='Employee First Name')
     Employee_Last_Name  = forms.CharField(label='Employee Last Name')
-    Employee_DBO  = forms.DateField(
-        widget=forms.DateInput(
-            attrs={
-                'class': 'form-control',
-                'type':"date"
-            }
-
-        ),label='Employee Date of Birth' 
-    )
+    Employee_Email = forms.CharField(label='Employee Email')
+    Password  = forms.CharField(label='Password')
+    Employee_DOB  = forms.DateField(label = 'Employee Date of Birth',widget=DateInput)
     Employee_Address= forms.CharField(label='Employee Address')
     Employee_Phone_Number  = forms.CharField(label='Employee Phone Number')
-    Employee_Salary  = forms.DecimalField(label='Employee Salary')
-    Employee_Class_Num= forms.CharField(label='Employee Class Number')
+    Classroom = forms.CharField(label='Classroom')
+    Hourly_Salary  = forms.IntegerField(label='Employee Salary')
+    Facility_Name = forms.CharField(label='Facility Name')
 
 
 class SearchEmp (forms.Form):
